@@ -21,7 +21,7 @@ export function ExerciseForm({ exercise }: any) {
         }
     })
     const router = useRouter()
-    const params = useParams<{ id: any }>()
+    const params = useParams<{ id: string }>()
 
     const onSubmit = handleSubmit(async (data) => {
         if (params.id) {

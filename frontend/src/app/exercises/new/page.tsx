@@ -5,7 +5,7 @@ import { getExercise } from '../exercises.api'
 
 interface Props {
     params: {
-        id: any
+        id: string
     }
 }
 

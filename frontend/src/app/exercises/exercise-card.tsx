@@ -5,14 +5,15 @@ import { Card, CardContent, CardTitle, CardHeader, CardFooter } from '@/componen
 import { Button } from "@/components/ui/button";
 import { deleteExercise } from './exercises.api'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 export function ExerciseCard({ exercise }: any) {
 
   const router = useRouter()
-  const handleDeleteExercise = async (id: any) => {
+  const handleDeleteExercise = async (id: string) => {
 
     await deleteExercise(id)
-    router.refresh()
+    router.refresh() // para actualizar la lista de ejercicios en la página principal
   }
 
   return (
@@ -29,7 +30,7 @@ export function ExerciseCard({ exercise }: any) {
           </CardHeader>
           <CardContent>
             <p>{exercise.description}</p>
-            <img src={exercise.imageUrl} alt={exercise.name} />
+            <Image src={exercise.imageUrl} alt={exercise.name} width={400} height={200} />
           </CardContent>
         </div>
 

@@ -3,16 +3,18 @@ import { getExercise } from '../exercises.api'
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
+import Image from 'next/image'
+
 
 interface Props {
     params: {
-        id: any
+        id: string
     }
 }
 
 async function ExerciseDetailPage({ params }: Props) {
     const exercise = await getExercise(params.id)
-
+    console.log(params) 
     return (
         <div className='flex items-center justify-center h-screen'>
             <Card>
@@ -26,7 +28,7 @@ async function ExerciseDetailPage({ params }: Props) {
                     <p>{exercise.description}</p>
                     <p>Ejercicio creado el: {exercise.createdAt}</p>
                     <p>Ultima actualziacion: {exercise.updatedAt}</p>
-                    <img src={exercise.imageUrl} alt={exercise.name} />
+                    <Image src={exercise.imageUrl} alt={exercise.name} />
                 </CardContent>
                 <CardFooter>
                     <Link

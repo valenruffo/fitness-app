@@ -7,7 +7,7 @@ async function getExercises() {
   return await data.json();
 }
 
-async function getExercise(id: number) {
+async function getExercise(id: string) {
   const data = await fetch(`${BACKEND_URL}/exercises/${id}`, {
     cache: "no-store",
   });
@@ -26,14 +26,14 @@ async function createExercise(exerciseData: any) {
   console.log(data);
 }
 
-async function deleteExercise(id: number) {
+async function deleteExercise(id: string) {
   const res = await fetch(`${BACKEND_URL}/exercises/${id}`, {
     method: "DELETE",
   });
   return await res.json();
 }
 
-async function updateExercise(id: number, editedExercise: any) {
+async function updateExercise(id: string, editedExercise: any) {
   const res = await fetch(`${BACKEND_URL}/exercises/${id}`, {
     method: "PATCH",
     headers: {
