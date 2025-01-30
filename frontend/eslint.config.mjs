@@ -10,10 +10,18 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends(
+    "next/core-web-vitals",
+    "next/typescript",
+    "airbnb",
+
+    "plugin:prettier/recommended"
+  ),
   {
     rules: {
       "@typescript-eslint/no-explicit-any": "off", // Desactiva la advertencia por `any`
+      "max-len": ["error", 140], // Limita el tamaño de líneas a 140 caracteres
+      quotes: [2, "single", { avoidEscape: true }], // Usa comillas simples
     },
   },
 ];

@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { useForm } from 'react-hook-form'
-import { createExercise, updateExercise } from '../exercises.api'
+import { createExercise, updateExercise } from '../services/exercises.service'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
@@ -21,7 +21,7 @@ export function ExerciseForm({ exercise }: any) {
         }
     })
     const router = useRouter()
-    const params = useParams<{ id: string }>()
+    const params = useParams<{ id: any }>()
 
     const onSubmit = handleSubmit(async (data) => {
         if (params.id) {
@@ -51,9 +51,9 @@ export function ExerciseForm({ exercise }: any) {
             <Input type="number" placeholder="Kilogramos..." {...register('weight')} />
 
             <Label>Imagen</Label>
-            <Input type="text" placeholder="Imagen del ejercicio(URL)" {...register('imageUrl')} />
+            <Input className='mt-1' type="text" placeholder="Imagen del ejercicio(URL)" {...register('imageUrl')} />
 
-            <Button className='mt-2 mr-1' type="submit">
+            <Button className='mt-3 mr-1' type="submit">
                 {params.id ? 'Editar ejercicio' : 'Crear ejercicio'}
             </Button>
             {params.id && <Link className={buttonVariants()} href='/'>Volver</Link>}

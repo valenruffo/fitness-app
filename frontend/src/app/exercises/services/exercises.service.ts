@@ -5,11 +5,11 @@ async function getExercises() {
     cache: "no-store", // para evitar que el navegador guarde la respuesta en caché
   });
   return await data.json();
-}
+} 
 
-async function getExercise(id: string) {
+async function getExercise(id: any) {
   const data = await fetch(`${BACKEND_URL}/exercises/${id}`, {
-    cache: "no-store",
+    cache: "no-store", 
   });
   return await data.json();
 }
@@ -26,14 +26,14 @@ async function createExercise(exerciseData: any) {
   console.log(data);
 }
 
-async function deleteExercise(id: string) {
+async function deleteExercise(id: any) {
   const res = await fetch(`${BACKEND_URL}/exercises/${id}`, {
     method: "DELETE",
   });
   return await res.json();
 }
 
-async function updateExercise(id: string, editedExercise: any) {
+async function updateExercise(id: any, editedExercise: any) {
   const res = await fetch(`${BACKEND_URL}/exercises/${id}`, {
     method: "PATCH",
     headers: {
